@@ -1,3 +1,5 @@
+// --Aim: Calculating a^b in O(log n) time complexity using Divide and Conquer.
+
 #include <iostream>
 using namespace std;
 
@@ -18,7 +20,6 @@ int main() {
     cin >> a;
     cout << "Enter exponent (b): ";
     cin >> b;
-
     cout << a << "^" << b << " = " << power(a, b) << endl;
     return 0;
 }
