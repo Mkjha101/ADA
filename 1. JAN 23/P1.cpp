@@ -1,4 +1,4 @@
-// Program for 1D Peak
+// --Aim: Program for 1D Peak
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
