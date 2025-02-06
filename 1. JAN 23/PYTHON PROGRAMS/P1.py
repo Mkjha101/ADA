@@ -77,7 +77,7 @@ def TC():
     return Table1
 
 # User Input
-In = int(input("\n1. For Sample Program: Enter 0\n2. For Time Complexity Graph: Enter 1\nOption "))
+In = int(input("\n1. For Sample Program: Enter 0\n2. For Time Complexity Graph: Enter 1\nOption: "))
 if(In==0):
     User()
 elif(In==1):
