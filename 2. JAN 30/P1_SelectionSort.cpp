@@ -31,7 +31,7 @@ int main() {
     cout << "\t\t\tSelection Sort\n" << "Enter number of elements: ";
     cin >> n;
     int *Array = new int[n];
-        CreateArray(n, Array);
+    CreateArray(n, Array);
     // Sample Array
     cout << "Sample Array:\n";
     for(int i = 0; i < n; i++) {
