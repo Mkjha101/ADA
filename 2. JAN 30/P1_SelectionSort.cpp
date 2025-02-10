@@ -38,7 +38,7 @@ int main() {
         cout << Array[i] << " ";
     }
     cout << endl;
-        selectionSort(Array, n);
+    selectionSort(Array, n);
 
     // Printing Sorted Array
     cout << "\nSorted Array:\n";
