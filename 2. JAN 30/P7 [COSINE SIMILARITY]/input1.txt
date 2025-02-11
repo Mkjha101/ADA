@@ -1,0 +1,2 @@
+This file is for testing Cosine Similarity Program. Bye bye, we'll talk later sir.
+Call me on "+91 63xx3xx26"
