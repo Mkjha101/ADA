@@ -87,10 +87,24 @@ elif(In==1):
     y=Table[0]
     x=Table[1]
     print("Obs:", x, "\nTime:", y)
+    
+    # Style Edits using ChatGPT
+    mp.style.use('bmh')
+    mp.figure(figsize=(10, 6))
+    
     mp.title("Time Complexity for\n\'1-D Peak\'")
-    mp.plot(x,y)
+    mp.plot(x,y, marker='o', linewidth=2, color='teal')  # Convert to milliseconds
     mp.xlabel("Observations")
     mp.ylabel("Time")
-    mp.show()
+
+    # Using ChatGPT
+    mp.grid(True, linestyle='--', alpha=0.6)
+    mp.tight_layout()
+    mp.xticks(fontsize=10)
+    mp.yticks(fontsize=10)
+
+    mp.show() #block=false
+    #mp.pause(40)
+    #mp.close()
 else:
     print("\nInvalid Input!")
