@@ -6,8 +6,13 @@ for i in range(Rows):
     Matrix.append([])
     Peaks.append([])
     for j in range(Cols):
-        print("Enter element",i+1)
+        print("Enter element",i+j+1,end="")
         temp=int(input(": "))
         Matrix[i].append(temp)
         Peaks[i].append(0)
 
+print(Matrix, Peaks, sep="\n")
+
+for i in range(Rows):
+    for j in range(Cols):
+        ;
