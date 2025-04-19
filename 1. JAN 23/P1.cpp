@@ -4,6 +4,7 @@
 #include <ctime>
 #include <chrono>
 #include <iomanip>
+#include <vector>  // For dynamic storage
 using namespace std;
 using namespace std::chrono;
 
@@ -41,6 +42,10 @@ int main(){
     if(m==0 || m==1){
         m=1.5;
     }
+
+    // Vector to store observations and timings
+    vector<int> Obs;
+    vector<double> T;
     while(n<100000){
         int *Array = new int[n],*Peak = new int[n];
         CreateArray(n, Array, Peak);
@@ -53,7 +58,9 @@ int main(){
         cout << "For n = "<<n<< ", Average Time = "<<seconds<< fixed << setprecision(9) <<" seconds"<<endl;
         delete [] Array;
         delete [] Peak;
-
+        // Store Results
+        Obs.push_back(n);
+        T.push_back(seconds);
         n*=m;
     }
     
@@ -68,5 +75,22 @@ int main(){
     }
     cout << "]";
     */
+
+    // Output arrays for plotting
+    cout << "\n\n// Data for Plotting" << endl;
+    cout << "Observations = [";
+    for(size_t i = 0; i < Obs.size(); i++){
+        cout << Obs[i];
+        if(i != Obs.size()-1) cout << ", ";
+    }
+    cout << "]" << endl;
+
+    cout << "Time_values = [";
+    for(size_t i = 0; i < T.size(); i++){
+        cout << T[i];
+        if(i != T.size()-1) cout << ", ";
+    }
+    cout << "]" << endl;
+
     return 0;
 }
