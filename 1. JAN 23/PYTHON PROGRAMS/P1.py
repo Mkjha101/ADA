@@ -60,7 +60,7 @@ def TC():
     Table1=tuple()
     T=[]
     N=[]
-    n=50
+    n=100
     while(n<=10**4):
         Tdiff=0
         List=array(n)
