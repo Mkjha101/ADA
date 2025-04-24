@@ -30,7 +30,7 @@ void Peaks(int m, int n, int** Arr, int** Peaks){
         }
         
         // For the last Array
-        if(i==n-1){
+        if(i==m-1){
             if(j==0){
                 if(Arr[i][j]>Arr[i-1][j] && Arr[i][j]>Arr[i][j+1]){
                     count=1;
@@ -47,7 +47,7 @@ void Peaks(int m, int n, int** Arr, int** Peaks){
         }
 
         // For other Arrays
-        if(i>0 && i<n-1){
+        if(i>0 && i<m-1){
             if(j==0){
                 (Arr[i][j]>Arr[i][j+1] && Arr[i][j]>Arr[i+1][j] && Arr[i][j]>Arr[i-1][j])?count=1:0;
             }
@@ -58,15 +58,8 @@ void Peaks(int m, int n, int** Arr, int** Peaks){
                 (Arr[i][j]>Arr[i][j-1] && Arr[i][j]>Arr[i][j+1] && Arr[i][j]>Arr[i+1][j] && Arr[i][j]>Arr[i-1][j])?count=1:0;
             }
         }
-        count==1?Peaks[i][j]=1:0;
-
-        /*
-        // New Approach
-        if(Arr[i][j]>Arr[i][j+1] && Arr[i][j]>Arr[i][j-1] && Arr[i][j]>Arr[i-1][j] && Arr[i][j]>Arr[i+1][j]){
+        if(count==1)
             Peaks[i][j]=1;
-        }
-        cout << "i: " << i << "\tj: " << j << "\tPeaks: " << Peaks[i][j] << endl;
-        */
     }
 }
 
@@ -98,7 +91,7 @@ int main(){
     Peaks(m, n, Arr, Peak);
     
     // Printing Object Matrix
-    cout << "\nGiven Matrix:-\n";
+    cout << "Given Matrix:-\n";
     for(int i=0; i<m; i++){
         cout << "[";
         for(int j=0; j<n; j++){
