@@ -15,4 +15,4 @@ print(Matrix, Peaks, sep="\n")
 
 for i in range(Rows):
     for j in range(Cols):
-        ;
+        ""
