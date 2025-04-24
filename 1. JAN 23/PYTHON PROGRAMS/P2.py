@@ -1,5 +1,90 @@
 # --Aim: 2D Peak
 
+import time
+import random
+import matplotlib.pyplot as mp
+
+# Generate random 2D array of size rows × cols
+def generate_array(rows, cols):
+    return [[random.randint(1, rows * cols + 1) for _ in range(cols)] for _ in range(rows)]
+
+# Check for 2D Peaks
+def find_2d_peaks(matrix, rows, cols):
+    peaks = []
+    for i in range(rows):
+        row_peaks = []
+        for j in range(cols):
+            current = matrix[i][j]
+            top = matrix[i-1][j] if i > 0 else float('-inf')
+            bottom = matrix[i+1][j] if i < rows - 1 else float('-inf')
+            left = matrix[i][j-1] if j > 0 else float('-inf')
+            right = matrix[i][j+1] if j < cols - 1 else float('-inf')
+
+            if current > top and current > bottom and current > left and current > right:
+                row_peaks.append(1)
+            else:
+                row_peaks.append(0)
+        peaks.append(row_peaks)
+    return peaks
+
+# Main logic
+def main():
+    random.seed(0)  # For reproducibility
+
+    rows = int(input("Enter number of Rows in Matrix:\t"))
+    cols = int(input("Enter number of Columns in Matrix:\t"))
+    multiplier = float(input("Enter Size multiplier:\t"))
+
+    N = []  # Problem size (rows × cols)
+    T = []  # Execution time
+
+    while rows <= 10**3 and cols <= 10**3:
+        total_time = 0
+        matrix = generate_array(rows, cols)
+
+        for i in range(100):
+            start = time.perf_counter()
+            peaks = find_2d_peaks(matrix, rows, cols)
+            end = time.perf_counter()
+            total_time += (end - start)
+            '''
+            if i == 0:
+                print("Peak Matrix:")
+                for r in peaks:
+                    print(r)
+                peak_count = sum(sum(row) for row in peaks)
+                print(f"Total Peaks Found: {peak_count}")
+            '''
+
+        avg_time = total_time / 100
+        T.append(avg_time)
+        N.append(rows * cols)
+
+        rows = int(rows * multiplier)
+        cols = int(cols * multiplier)
+
+    # Plotting Time Complexity
+    print("Observations (n):", N)
+    print("Time (s):", T)
+
+    mp.style.use('bmh')
+    mp.figure(figsize=(10, 6))
+    mp.title("Time Complexity for '2-D Peak'")
+    mp.plot(N, T, marker='o', linewidth=2, color='teal')
+    mp.xlabel("Matrix Size (rows × cols)")
+    mp.ylabel("Avg Execution Time (seconds)")
+    mp.grid(True, linestyle='--', alpha=0.6)
+    mp.tight_layout()
+    mp.xticks(fontsize=10)
+    mp.yticks(fontsize=10)
+    mp.show()
+
+if __name__ == "__main__":
+    main()
+
+'''
+# --Aim: 2D Peak
+
 # Importing Library
 import time
 import random
@@ -117,88 +202,4 @@ mp.yticks(fontsize=10)
 
 mp.show() #block=false
 
-'''
-# --Aim: 2D Peak
-
-import time
-import random
-import matplotlib.pyplot as mp
-
-# Generate random 2D array of size rows × cols
-def generate_array(rows, cols):
-    return [[random.randint(1, rows * cols + 1) for _ in range(cols)] for _ in range(rows)]
-
-# Check for 2D Peaks
-def find_2d_peaks(matrix, rows, cols):
-    peaks = []
-    for i in range(rows):
-        row_peaks = []
-        for j in range(cols):
-            current = matrix[i][j]
-            top = matrix[i-1][j] if i > 0 else float('-inf')
-            bottom = matrix[i+1][j] if i < rows - 1 else float('-inf')
-            left = matrix[i][j-1] if j > 0 else float('-inf')
-            right = matrix[i][j+1] if j < cols - 1 else float('-inf')
-
-            if current > top and current > bottom and current > left and current > right:
-                row_peaks.append(1)
-            else:
-                row_peaks.append(0)
-        peaks.append(row_peaks)
-    return peaks
-
-# Main logic
-def main():
-    random.seed(0)  # For reproducibility
-
-    rows = int(input("Enter number of Rows in Matrix:\t"))
-    cols = int(input("Enter number of Columns in Matrix:\t"))
-    multiplier = float(input("Enter Size multiplier:\t"))
-
-    N = []  # Problem size (rows × cols)
-    T = []  # Execution time
-
-    while rows <= 10**3 and cols <= 10**3:
-        total_time = 0
-        matrix = generate_array(rows, cols)
-
-        for i in range(100):
-            start = time.perf_counter()
-            peaks = find_2d_peaks(matrix, rows, cols)
-            end = time.perf_counter()
-            total_time += (end - start)
-            
-            if i == 0:
-                print("Peak Matrix:")
-                for r in peaks:
-                    print(r)
-                peak_count = sum(sum(row) for row in peaks)
-                print(f"Total Peaks Found: {peak_count}")
-            
-
-        avg_time = total_time / 100
-        T.append(avg_time)
-        N.append(rows * cols)
-
-        rows = int(rows * multiplier)
-        cols = int(cols * multiplier)
-
-    # Plotting Time Complexity
-    print("Observations (n):", N)
-    print("Time (s):", T)
-
-    mp.style.use('bmh')
-    mp.figure(figsize=(10, 6))
-    mp.title("Time Complexity for '2-D Peak'")
-    mp.plot(N, T, marker='o', linewidth=2, color='teal')
-    mp.xlabel("Matrix Size (rows × cols)")
-    mp.ylabel("Avg Execution Time (seconds)")
-    mp.grid(True, linestyle='--', alpha=0.6)
-    mp.tight_layout()
-    mp.xticks(fontsize=10)
-    mp.yticks(fontsize=10)
-    mp.show()
-
-if __name__ == "__main__":
-    main()
 '''
